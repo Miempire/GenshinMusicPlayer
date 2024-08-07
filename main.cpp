@@ -63,11 +63,11 @@ void Play(std::vector<std::string>& playlist, int bpm, int delayAdjustment) {
 }  
   
 int main() {  
-    HND hwnd = GetHandle("cloud game player", "", "", "Qt5151QWindowIcon", true);  
-    std::cout << "Window name: " << hwnd.windowName << std::endl;  
+    HND hwnd = GetHandle("这里写游戏的窗口标题", "", "", "这里写游戏的窗口类名", true);  ///第三个参数说明是否为控件
+    std::cout << "Window name: " << hwnd.windowName << std::endl;  ///打印获取的窗口标题
   
-    std::string playlistText = "AASDKSJ"; // Placeholder for actual playlist text  
-    std::vector<std::string> playlist;  
+    std::string playlistText = "AASDKSJ"; // Placeholder for actual playlist text  键位表位置，需要自己设计
+    std::vector<std::string> playlist;  ///分割播放表
     // Split playlistText into lines and store in playlist vector  
     size_t prevPos = 0, pos;  
     while ((pos = playlistText.find('\n', prevPos)) != std::string::npos) {  
@@ -79,7 +79,7 @@ int main() {
     int bpm = 120;  
     int delayAdjustment = 0;  
     std::thread playThread(Play, std::ref(playlist), bpm, delayAdjustment);  
-    playThread.join();  
+    playThread.join();  ///创建播放进程，下面写个别的东西，让它不要立刻结束
   
     return 0;  
 }
